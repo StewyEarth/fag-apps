@@ -1,31 +1,68 @@
 import React, { Component } from 'react'
-import { Text,} from 'react-native'
+import { Text, View, StyleSheet, Button } from 'react-native'
 
 export default class Counter extends Component {
-    state = { 
+    constructor() {
+        super()
+        this.timer = {
+            isOn: false,
+            timer: null,
+        };
+    }
+
+    state = {
         seconds: 0,
-        minutes: 0 
+        minutes: 0
     }
 
     componentDidMount() {
-        setInterval(() => {
-            if (this.state.seconds >= 60) {
-                this.setState({minutes: this.state.minutes + 1})
-                this.setState({seconds: 0})
-            } else {
-                this.setState({seconds: this.state.seconds + 1})
-            }
-        }, 1000);
+        this.startTimer();
     }
+    stopTimer() {
+        clearInterval(this.timer.timer)
+        this.timer.isOn = false
+    }
+    startTimer() {
+        if (!this.timer.isOn) {
+            this.timer.isOn = true;
+            this.timer.timer = setInterval(() => {
+                if (this.state.seconds >= 59) {
+                    this.setState({ minutes: this.state.minutes + 1 })
+                    this.setState({ seconds: 0 })
+                } else {
+                    this.setState({ seconds: this.state.seconds + 1 })
+                }
+            }, 1000);
+        }
+    }
+
     render() {
-        const {minutes} = this.state
-        const {seconds} = this.state
-        console.log(this.state.seconds)
+        const { color, size } = this.props
+        const { minutes } = this.state
+        const { seconds } = this.state
         return (
-            <Text>
-                {minutes} : {seconds}
-            </Text>
+            <View>
+                <Text style={{ color, fontSize: size }}>
+                    {minutes} : {seconds}
+                </Text>
+                <View style={styles.fixToText}>
+                    <Button
+                        title="Start"
+                        onPress={() => this.startTimer()}
+                    />
+                    <Button
+                        title="Stop"
+                        onPress={() => this.stopTimer()}
+                    />
+                </View>
+            </View>
         )
     }
 }
 
+const styles = StyleSheet.create({
+    fixToText: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+    },
+});

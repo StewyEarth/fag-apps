@@ -4,6 +4,14 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 
 export default function App() {
+  let andeby = [
+    { id: 1, name: 'Anders And' },
+    { id: 2, name: 'Mickey Mouse' },
+    { id: 3, name: 'Fedtmule' }
+  ]
+  const aender = andeby.map((and) =>
+    <Text>{and.name}</Text>
+  );
   return (
     <View style={styles.container}>
 
@@ -18,8 +26,8 @@ export default function App() {
         leftIconContainerStyle={{ marginRight: "1em" }}
         secureTextEntry={true}
       />
-      <Button style={{ marginTop: "2em"}}
-      containerStyle={{width: "80%"}}
+      <Button style={{ marginTop: "2em" }}
+        containerStyle={{ width: "80%" }}
         icon={
           <Icon
             name="arrow-right"
@@ -29,6 +37,7 @@ export default function App() {
         }
         title="Login"
       />
+      {aender}
 
     </View>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Icon, Header } from 'react-native-elements'
 
 import CurrentWeather from "./components/CurrentWeather"
 import HourlyWeather from "./components/HourlyWeather"

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, FlatList,ActivityIndicator } from 'react-native'
+import { Text, StyleSheet, View, FlatList, ActivityIndicator, SafeAreaView } from 'react-native'
 import { Icon, Image } from 'react-native-elements'
 
 export default class HourlyWeather extends Component {
@@ -8,19 +8,20 @@ export default class HourlyWeather extends Component {
         HourlyWeather: [],
     }
     async componentDidMount() {
-            const HourlyWeatherApiCall = await fetch('https://api.weatherbit.io/v2.0/forecast/hourly?city=Roskilde,DK&key=ceb2ce31cb7947e2b72f126847ddfcae&hours=6');
-            const HourlyWeather = await HourlyWeatherApiCall.json();
-            this.setState({ HourlyWeather: HourlyWeather.data, loading: false });
+        const HourlyWeatherApiCall = await fetch('https://api.weatherbit.io/v2.0/forecast/hourly?city=Roskilde,DK&key=ceb2ce31cb7947e2b72f126847ddfcae&hours=24');
+        const HourlyWeather = await HourlyWeatherApiCall.json();
+        this.setState({ HourlyWeather: HourlyWeather.data, loading: false });
     }
     renderItem = ({ item }) => {
         return (
-            <View style={{flex:1,flexDirection:"row"}}>
+            <View style={{ alignItems: "center", width: 50 }}>
+                <Text style={{ marginLeft: 20, color: "white" }}>{`${Math.round(item.temp)}°`}</Text>
                 <Image
                     source={{ uri: `https://www.weatherbit.io/static/img/icons/${item.weather.icon}.png` }}
-                    style={{ width: 50, height: 50 }}
+                    style={{ width: 30, height: 30 }}
                     PlaceholderContent={<ActivityIndicator />}
                 />
-                <Text>{`${item.weather.description}, ${item.temp}`}</Text>
+                <Text style={{ marginRight: 10, color: "white" }}>{`${item.timestamp_local.substring(11, 16)}`}</Text>
             </View>
         )
     }
@@ -28,6 +29,8 @@ export default class HourlyWeather extends Component {
         return (
             <View>
                 <FlatList
+                    style={{ width: 300 }}
+                    horizontal
                     data={this.state.HourlyWeather}
                     renderItem={this.renderItem}
                 />

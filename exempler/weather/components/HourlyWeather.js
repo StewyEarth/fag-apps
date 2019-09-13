@@ -12,13 +12,13 @@ export default class HourlyWeather extends Component {
         const HourlyWeather = await HourlyWeatherApiCall.json();
         this.setState({ HourlyWeather: HourlyWeather.data, loading: false });
     }
-    renderItem = ({ item }) => {
+    renderItem = ({ item, index }) => {
         return (
             <View style={{ alignItems: "center", width: 50 }}>
                 <Text style={{ marginLeft: 20, color: "white" }}>{`${Math.round(item.temp)}°`}</Text>
                 <Image
                     source={{ uri: `https://www.weatherbit.io/static/img/icons/${item.weather.icon}.png` }}
-                    style={{ width: 30, height: 30 }}
+                    style={{ width: 50, height: 50 }}
                     PlaceholderContent={<ActivityIndicator />}
                 />
                 <Text style={{ marginRight: 10, color: "white" }}>{`${item.timestamp_local.substring(11, 16)}`}</Text>
@@ -27,11 +27,13 @@ export default class HourlyWeather extends Component {
     }
     render() {
         return (
-            <View>
+            <View style={{ marginTop: 50 }}>
                 <FlatList
-                    style={{ width: 300 }}
                     horizontal
+                    style={{ width: "90vw", borderTop: "1px solid white", borderBottom: "1px solid white", paddingTop: 8,paddingBottom:8}}
+                    showsHorizontalScrollIndicator={false}
                     data={this.state.HourlyWeather}
+                    keyExtractor={(item, index) => String(index)}
                     renderItem={this.renderItem}
                 />
             </View>

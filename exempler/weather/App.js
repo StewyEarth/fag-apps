@@ -12,10 +12,10 @@ export default function App() {
       style={styles.container}
       colors={["#d484b2", "#b16da6", "#8c599b", "#63488e", "#32387f"]}
       start={[-.3, .75]}>
-      <ScrollView style={{ width: "90%" }}>
+      <View >
         <CurrentWeather />
         <HourlyWeather />
-      </ScrollView>
+      </View>
       <Text>Bottom Navigation</Text>
     </LinearGradient>
   );

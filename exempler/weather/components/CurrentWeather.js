@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, StyleSheet, View, ActivityIndicator } from 'react-native'
-import { Image, Header } from 'react-native-elements'
+import { Image, Header, Icon } from 'react-native-elements'
 
 //https://api.weatherbit.io/v2.0/forecast/hourly?city=Roskilde,DK&key=ceb2ce31cb7947e2b72f126847ddfcae&hours=48
 export default class HourlyWeather extends Component {
@@ -15,7 +15,7 @@ export default class HourlyWeather extends Component {
         this.getCurrentTime()
         this.setState({ currentWeather: currentWeather.data[0], loading: false });
     }
-    getCurrentTime(){
+    getCurrentTime() {
         let date = new Date()
         let hour = date.getHours();
         let minutes = date.getMinutes();
@@ -28,7 +28,7 @@ export default class HourlyWeather extends Component {
         }
 
         this.setState({ currentTime: hour + ':' + minutes });
-        let days = ["Sun","Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+        let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
         days.map((item, key) => {
             if (key == date.getDay()) {
                 this.setState({ dateAndTime: `${item}, ${hour}:${minutes}` });
@@ -43,6 +43,8 @@ export default class HourlyWeather extends Component {
             const { currentWeather } = this.state
             const { dateAndTime } = this.state
             const temp = `${Math.round(currentWeather.temp)}°`
+            const cloudPercent = `${Math.round(currentWeather.clouds)}%`
+            const windSpeed = `${Math.round(currentWeather.wind_spd)} m/s`
             const conditions = `${currentWeather.weather.description}`
             return (
                 <View>
@@ -66,6 +68,62 @@ export default class HourlyWeather extends Component {
                         </View>
                         <Text style={{ color: "white", fontSize: 100, fontWeight: "100" }}>{temp}</Text>
                     </View>
+                    <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+                        <View>
+                            <View>
+                                <Text>Sunrise</Text>
+                                <View style={{ flexDirection: "row" }}>
+
+                                    <Icon
+                                        name='sunrise'
+                                        type='feather'
+                                        color='#fff'
+                                    />
+                                    <Text style={{ color: "white", fontSize: 20, marginLeft: 10 }}>{currentWeather.sunrise}</Text>
+                                </View>
+                            </View>
+                            <View>
+                                <Text>Sunset</Text>
+                                <View style={{ flexDirection: "row" }}>
+
+                                    <Icon
+                                        name='sunset'
+                                        type='feather'
+                                        color='#fff'
+                                    />
+                                    <Text style={{ color: "white", fontSize: 20, marginLeft: 10 }}>{currentWeather.sunset}</Text>
+                                </View>
+                            </View>
+
+                        </View>
+                        <View>
+                            <View>
+                                <Text>Wind Speed</Text>
+                                <View style={{ flexDirection: "row" }}>
+
+                                    <Icon
+                                        name='wind'
+                                        type='feather'
+                                        color='#fff'
+                                    />
+                                    <Text style={{ color: "white", fontSize: 20, marginLeft: 10 }}>{windSpeed}</Text>
+                                </View>
+                            </View>
+                            <View>
+                                <Text>Wind Speed</Text>
+                                <View style={{ flexDirection: "row" }}>
+
+                                    <Icon
+                                        name='cloud'
+                                        type='feather'
+                                        color='#fff'
+                                    />
+                                    <Text style={{ color: "white", fontSize: 20, marginLeft: 10 }}>{cloudPercent}</Text>
+                                </View>
+                            </View>
+                        </View>
+                    </View>
+
                 </View>
             )
         } else {

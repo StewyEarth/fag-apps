@@ -68,12 +68,11 @@ export default class HourlyWeather extends Component {
                         </View>
                         <Text style={{ color: "white", fontSize: 100, fontWeight: "100" }}>{temp}</Text>
                     </View>
-                    <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+                    <View style={{ flexDirection: "row", justifyContent: "space-between", marginTop: 16 }}>
                         <View>
-                            <View>
-                                <Text>Sunrise</Text>
+                            <View style={{marginBottom: 16}}>
+                                <Text style={{color:"white",marginBottom: 4}}>Sunrise</Text>
                                 <View style={{ flexDirection: "row" }}>
-
                                     <Icon
                                         name='sunrise'
                                         type='feather'
@@ -83,9 +82,8 @@ export default class HourlyWeather extends Component {
                                 </View>
                             </View>
                             <View>
-                                <Text>Sunset</Text>
+                            <Text style={{color:"white",marginBottom: 4}}>Sunset</Text>
                                 <View style={{ flexDirection: "row" }}>
-
                                     <Icon
                                         name='sunset'
                                         type='feather'
@@ -97,10 +95,9 @@ export default class HourlyWeather extends Component {
 
                         </View>
                         <View>
-                            <View>
-                                <Text>Wind Speed</Text>
+                            <View style={{marginBottom: 16}}>
+                            <Text style={{color:"white",marginBottom: 4}}>Wind Speed</Text>
                                 <View style={{ flexDirection: "row" }}>
-
                                     <Icon
                                         name='wind'
                                         type='feather'
@@ -110,9 +107,8 @@ export default class HourlyWeather extends Component {
                                 </View>
                             </View>
                             <View>
-                                <Text>Wind Speed</Text>
+                            <Text style={{color:"white",marginBottom: 4}}>Cloud Percent</Text>
                                 <View style={{ flexDirection: "row" }}>
-
                                     <Icon
                                         name='cloud'
                                         type='feather'

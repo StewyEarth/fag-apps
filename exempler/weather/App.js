@@ -16,7 +16,6 @@ export default function App() {
         <CurrentWeather />
         <HourlyWeather />
       </View>
-      <Text>Bottom Navigation</Text>
     </LinearGradient>
   );
 }

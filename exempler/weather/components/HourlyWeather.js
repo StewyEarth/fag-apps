@@ -27,7 +27,7 @@ export default class HourlyWeather extends Component {
     }
     render() {
         return (
-            <View style={{ marginTop: 50 }}>
+            <View style={{}}>
                 <FlatList
                     horizontal
                     style={{ width: "90vw", borderTop: "1px solid white", borderBottom: "1px solid white", paddingTop: 8,paddingBottom:8}}

@@ -48,13 +48,6 @@ export default class HourlyWeather extends Component {
             const conditions = `${currentWeather.weather.description}`
             return (
                 <View>
-                    <Header
-                        containerStyle={{ width: "100%", backgroundColor: "transparent", borderBottomWidth: 0 }}
-                        placement="center"
-                        leftComponent={{ icon: 'menu', color: '#fff' }}
-                        centerComponent={{ text: 'Roskilde, DK', style: { color: '#fff', fontSize: 20 } }}
-                        rightComponent={{ icon: 'add', color: '#fff' }}
-                    />
                     <Text style={{ textAlign: "center", color: "white" }}>{dateAndTime}</Text>
 
                     <View style={styles.topSection}>
@@ -68,10 +61,12 @@ export default class HourlyWeather extends Component {
                         </View>
                         <Text style={{ color: "white", fontSize: 100, fontWeight: "100" }}>{temp}</Text>
                     </View>
+
+
                     <View style={{ flexDirection: "row", justifyContent: "space-between", marginTop: 16 }}>
                         <View>
-                            <View style={{marginBottom: 16}}>
-                                <Text style={{color:"white",marginBottom: 4}}>Sunrise</Text>
+                            <View style={{ marginBottom: 16 }}>
+                                <Text style={{ color: "white", marginBottom: 4 }}>Sunrise</Text>
                                 <View style={{ flexDirection: "row" }}>
                                     <Icon
                                         name='sunrise'
@@ -81,8 +76,8 @@ export default class HourlyWeather extends Component {
                                     <Text style={{ color: "white", fontSize: 20, marginLeft: 10 }}>{currentWeather.sunrise}</Text>
                                 </View>
                             </View>
-                            <View>
-                            <Text style={{color:"white",marginBottom: 4}}>Sunset</Text>
+                            <View style={{ marginBottom: 16 }}>
+                                <Text style={{ color: "white", marginBottom: 4 }}>Sunset</Text>
                                 <View style={{ flexDirection: "row" }}>
                                     <Icon
                                         name='sunset'
@@ -92,11 +87,22 @@ export default class HourlyWeather extends Component {
                                     <Text style={{ color: "white", fontSize: 20, marginLeft: 10 }}>{currentWeather.sunset}</Text>
                                 </View>
                             </View>
+                            <View style={{ marginBottom: 16 }}>
+                                <Text style={{ color: "white", marginBottom: 4 }}>Feels Like</Text>
+                                <View style={{ flexDirection: "row" }}>
+                                    <Icon
+                                        name='thermometer'
+                                        type='feather'
+                                        color='#fff'
+                                    />
+                                    <Text style={{ color: "white", fontSize: 20, marginLeft: 10 }}>{`${Math.round(currentWeather.app_temp)}°`}</Text>
+                                </View>
+                            </View>
 
                         </View>
                         <View>
-                            <View style={{marginBottom: 16}}>
-                            <Text style={{color:"white",marginBottom: 4}}>Wind Speed</Text>
+                            <View style={{ marginBottom: 16 }}>
+                                <Text style={{ color: "white", marginBottom: 4 }}>Wind Speed</Text>
                                 <View style={{ flexDirection: "row" }}>
                                     <Icon
                                         name='wind'
@@ -106,8 +112,19 @@ export default class HourlyWeather extends Component {
                                     <Text style={{ color: "white", fontSize: 20, marginLeft: 10 }}>{windSpeed}</Text>
                                 </View>
                             </View>
+                            <View style={{ marginBottom: 16 }}>
+                                <Text style={{ color: "white", marginBottom: 4 }}>Humidity</Text>
+                                <View style={{ flexDirection: "row" }}>
+                                    <Icon
+                                        name='tint'
+                                        type='font-awesome'
+                                        color='#fff'
+                                    />
+                                    <Text style={{ color: "white", fontSize: 20, marginLeft: 10 }}>{`${currentWeather.rh}%`}</Text>
+                                </View>
+                            </View>
                             <View>
-                            <Text style={{color:"white",marginBottom: 4}}>Cloud Percent</Text>
+                                <Text style={{ color: "white", marginBottom: 4 }}>Cloud Percent</Text>
                                 <View style={{ flexDirection: "row" }}>
                                     <Icon
                                         name='cloud'
@@ -134,4 +151,7 @@ const styles = StyleSheet.create({
         flex: 1,
         marginTop: 50,
     },
+    smallInfoContainer: {
+
+    }
 })

@@ -27,7 +27,6 @@ export default class HourlyWeather extends Component {
             minutes = '0' + minutes;
         }
 
-        this.setState({ currentTime: hour + ':' + minutes });
         let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
         days.map((item, key) => {
             if (key == date.getDay()) {

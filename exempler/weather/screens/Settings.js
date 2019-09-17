@@ -10,8 +10,8 @@ const styles = StyleSheet.create({
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Header, Button, Icon } from 'react-native-elements'
-import WeatherSettings from "../components/WeatherSettings"
+import { Header, Button, Icon } from 'react-native-elements';
+import WeatherSettings from "../components/WeatherSettings";
 
 class Settings extends Component {
     render() {

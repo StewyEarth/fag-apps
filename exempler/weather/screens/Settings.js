@@ -8,8 +8,9 @@ const styles = StyleSheet.create({
 
 
 import React, { Component } from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Header, Button, Icon } from 'react-native-elements'
 import WeatherSettings from "../components/WeatherSettings"
 
 class Settings extends Component {
@@ -21,8 +22,20 @@ class Settings extends Component {
                 style={styles.container}
                 colors={["#d484b2", "#b16da6", "#8c599b", "#63488e", "#32387f"]}
                 start={[-.3, .75]}>
-                <View style={{width:"100%", alignItems:"center"}}>
-                    <Button onPress={() => navigate('Home')} title="Home" />
+                <View style={{ width: "100%", alignItems: "center" }}>
+                    <Button onPress={() => navigate('Home')}
+                        title="Home"
+                        containerStyle={{alignSelf: "flex-start",marginLeft: 16,marginTop: 16,marginBottom: 16}}
+                        buttonStyle={{ backgroundColor: "transparent", padding: 0 }}
+                        icon={
+                            <Icon
+                                name="chevron-left"
+                                size={20}
+                                containerStyle={{marginRight: 8}}
+                                color="white"
+                                type='font-awesome'
+                            />
+                        } />
                     <WeatherSettings />
                 </View>
             </LinearGradient>

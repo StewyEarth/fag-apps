@@ -21,7 +21,7 @@ export default class WeatherSettings extends Component {
                     titleStyle={{ marginLeft: 8 }}
                     leftIcon={{ name: "thermometer-quarter", type: "font-awesome" }}
                     bottomDivider
-                    buttonGroup={{ buttons: ["C","F"], buttonStyle: {}, selectedButtonStyle: { backgroundColor: "green" },selectedIndex: 0 }}
+                    buttonGroup={{ buttons: ["C", "F"], buttonStyle: {}, selectedButtonStyle: { backgroundColor: "green" }, selectedIndex: 0 }}
                 />
                 {list.map((item, i) => (
                     <ListItem

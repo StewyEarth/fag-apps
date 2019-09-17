@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
 import React, { Component } from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import WeatherSettings from "../components/WeatherSettings"
 
 class Settings extends Component {
     render() {
@@ -20,9 +21,9 @@ class Settings extends Component {
                 style={styles.container}
                 colors={["#d484b2", "#b16da6", "#8c599b", "#63488e", "#32387f"]}
                 start={[-.3, .75]}>
-                <View>
-                    <Text>This is the Settings screen</Text>
+                <View style={{width:"100%", alignItems:"center"}}>
                     <Button onPress={() => navigate('Home')} title="Home" />
+                    <WeatherSettings />
                 </View>
             </LinearGradient>
         )

@@ -9,12 +9,22 @@ export default class HourlyWeather extends Component {
         currentWeather: [],
         timeAndDay: "",
     }
-    async componentDidMount() {
-        const currentWeatherApiCall = await fetch('https://api.weatherbit.io/v2.0/current?city=Roskilde,DK&key=ceb2ce31cb7947e2b72f126847ddfcae');
+    componentDidMount() {
+        this.fetchStuff()
+    }
+    async fetchStuff() {
+        const currentWeatherApiCall = await fetch(`https://api.weatherbit.io/v2.0/current?city=${this.props.location}&key=ceb2ce31cb7947e2b72f126847ddfcae`);
         const currentWeather = await currentWeatherApiCall.json();
         this.getCurrentTime()
         this.setState({ currentWeather: currentWeather.data[0], loading: false });
     }
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.location !== this.props.location) {
+            this.setState({ currentWeather: null, loading: true });
+            this.fetchStuff();
+        }
+    }
+    
     getCurrentTime() {
         let date = new Date()
         let hour = date.getHours();

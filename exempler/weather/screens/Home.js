@@ -16,6 +16,11 @@ import HourlyWeather from "../components/HourlyWeather"
 class Home extends Component {
     render() {
         const { navigate } = this.props.navigation;
+        const { navigation } = this.props;
+        let location = navigation.getParam("location")
+        if(location == undefined){
+            location = "Roskilde,DK"
+        }
         return (
             <LinearGradient
                 style={styles.container}
@@ -37,7 +42,7 @@ class Home extends Component {
                             }
                             onPress={() => navigate('Settings')}
                         />}
-                        centerComponent={{ text: 'Roskilde, DK', style: { color: '#fff', fontSize: 20 } }}
+                        centerComponent={{ text: location, style: { color: '#fff', fontSize: 20 } }}
                         rightComponent={<Button
                             buttonStyle={{ backgroundColor: "transparent", padding: 0 }}
                             icon={
@@ -50,8 +55,8 @@ class Home extends Component {
                             }
                         />}
                     />
-                    <CurrentWeather />
-                    <HourlyWeather />
+                    <CurrentWeather location={location} />
+                    <HourlyWeather location={location} />
                 </View>
             </LinearGradient>
         )

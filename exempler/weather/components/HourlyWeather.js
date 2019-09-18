@@ -7,10 +7,21 @@ export default class HourlyWeather extends Component {
         loading: true,
         HourlyWeather: [],
     }
-    async componentDidMount() {
-        const HourlyWeatherApiCall = await fetch('https://api.weatherbit.io/v2.0/forecast/hourly?city=Roskilde,DK&key=ceb2ce31cb7947e2b72f126847ddfcae&hours=24');
+
+    componentDidMount() {
+        this.fetchStuff();
+    }
+    async fetchStuff(){
+        const HourlyWeatherApiCall = await fetch(`https://api.weatherbit.io/v2.0/forecast/hourly?city=${this.props.location}&key=ceb2ce31cb7947e2b72f126847ddfcae&hours=24`);
         const HourlyWeather = await HourlyWeatherApiCall.json();
         this.setState({ HourlyWeather: HourlyWeather.data, loading: false });
+    }
+    
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.location !== this.props.location) {
+            this.setState({ HourlyWeather: null, loading: true });
+            this.fetchStuff();
+        }
     }
     renderItem = ({ item, index }) => {
         return (

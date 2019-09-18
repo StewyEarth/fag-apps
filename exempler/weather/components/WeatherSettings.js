@@ -12,7 +12,23 @@ export default class WeatherSettings extends Component {
                     name: "compass"
                 },
             },
+        ];
+
+        const Locations = [
+            {
+                city: "Roskilde",
+                countryCode: "DK"
+            },
+            {
+                city: "Svendborg",
+                countryCode: "DK"
+            },
+            {
+                city: "London",
+                countryCode: "UK"
+            }
         ]
+
         return (
             <View style={{ width: "90%" }}>
                 <ListItem
@@ -30,7 +46,14 @@ export default class WeatherSettings extends Component {
                         titleStyle={{ marginLeft: 8 }}
                         leftIcon={{ name: item.icon.name, type: item.icon.type }}
                         bottomDivider
-                        chevron
+                    />))}
+                {Locations.map((item, i) => (
+                    <ListItem
+                        key={i}
+                        title={`${item.city}, ${item.countryCode}`}
+                        containerStyle={{backgroundColor: "#ededed"}}
+                        titleStyle={{ marginLeft: 8 }}
+                        bottomDivider
                     />))}
             </View>
         )

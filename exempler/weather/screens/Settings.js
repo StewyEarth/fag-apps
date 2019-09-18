@@ -23,7 +23,9 @@ class Settings extends Component {
                 colors={["#d484b2", "#b16da6", "#8c599b", "#63488e", "#32387f"]}
                 start={[-.3, .75]}>
                 <View style={{ width: "100%", alignItems: "center" }}>
-                    <Button onPress={() => navigate('Home')}
+                    <Button onPress={() => navigate('Home',{
+                        location: "London,UK"
+                    })}
                         title="Home"
                         containerStyle={{alignSelf: "flex-start",marginLeft: 16,marginTop: 16,marginBottom: 16}}
                         buttonStyle={{ backgroundColor: "transparent", padding: 0 }}
